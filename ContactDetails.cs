@@ -94,5 +94,15 @@ namespace AddressBookCollection
                 Console.WriteLine("\nEnter a valid First Name");
             }
         }
+
+        public void AddMultipleContact() //for adding multiple contact
+        {
+            Console.WriteLine("\nEnter How Many Contacts Want To Add");
+            int n = Convert.ToInt32(Console.ReadLine());
+            for (int i = 1; i <= n; i++)
+            {
+                AddContact();
+            }
+        }
     }
 }
