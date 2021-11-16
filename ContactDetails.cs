@@ -65,5 +65,15 @@ namespace AddressBookCollection
 
             Console.WriteLine("\nFirst Name: " + contact.FirstName + "\nLast Name: " + contact.LastName + "\nAddress: " + contact.Address + "\nCity: " + contact.City + "\nState: " + contact.State + "\nZip: " + contact.Zip + "\nPhone No: " + contact.PhoneNumber + "\nEmail: " + contact.Email); //disolaying details
         }
+
+        public void EditWithFirstName() //To edit Contact Details based on first name
+        {
+            Console.WriteLine("\nEnter Name To Edit");
+            string name = Convert.ToString(Console.ReadLine()); //getting the name input from user
+            if (name == contact.FirstName) //checking if name is equal to First Name
+            {
+                AddContact();
+            }
+        }
     }
 }
