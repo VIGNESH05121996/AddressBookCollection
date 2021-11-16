@@ -22,11 +22,10 @@ namespace AddressBookCollection
     class AddressBook
     {
         public List<ContactDetails> contactDetails = new List<ContactDetails>(); //created empty list of contactDetails of class ContactDetails every time when run code
+
+        ContactDetails contact = new ContactDetails(); //creating instance of class
         public void CreateContact()
         {
-
-            ContactDetails contact = new ContactDetails(); //creating instance of class
-
             //creating contact details with instance of class
             contact.FirstName = "Vignesh";
             contact.LastName = "Marimuthu";
@@ -36,6 +35,31 @@ namespace AddressBookCollection
             contact.Zip = "620025";
             contact.PhoneNumber = "123456789";
             contact.Email = "abc@gmail.com";
+
+            contactDetails.Add(contact); //Adding to list
+
+            Console.WriteLine("\nFirst Name: " + contact.FirstName + "\nLast Name: " + contact.LastName + "\nAddress: " + contact.Address + "\nCity: " + contact.City + "\nState: " + contact.State + "\nZip: " + contact.Zip + "\nPhone No: " + contact.PhoneNumber + "\nEmail: " + contact.Email); //disolaying details
+        }
+
+        public void AddContact()
+        {
+            //Getting detatils from user for new contact details
+            Console.WriteLine("\nEnter First Name");
+            contact.FirstName = Console.ReadLine();
+            Console.WriteLine("Enter Last Name");
+            contact.LastName = Console.ReadLine();
+            Console.WriteLine("Enter Address");
+            contact.Address = Console.ReadLine();
+            Console.WriteLine("Enter City");
+            contact.City = Console.ReadLine();
+            Console.WriteLine("Enter State");
+            contact.State = Console.ReadLine();
+            Console.WriteLine("Enter Zip");
+            contact.Zip = Console.ReadLine();
+            Console.WriteLine("Enter Phone Number");
+            contact.PhoneNumber = Console.ReadLine();
+            Console.WriteLine("Enter Email");
+            contact.Email = Console.ReadLine();
 
             contactDetails.Add(contact); //Adding to list
 

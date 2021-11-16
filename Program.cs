@@ -25,6 +25,10 @@ namespace AddressBookCollection
                         book.CreateContact();
                         break;
 
+                    case 2:
+                        book.AddContact();
+                        break;
+
                     default:
                         Console.WriteLine("\nEnter a valid choice");
                         break;
