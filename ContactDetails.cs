@@ -75,5 +75,24 @@ namespace AddressBookCollection
                 AddContact();
             }
         }
+
+        public void DeletePersonDetails() //deleting person based on First Name
+        {
+            Console.WriteLine("\nEnter Name To Delete");
+            string name = Convert.ToString(Console.ReadLine());
+            if (name == contact.FirstName)
+            {
+                Console.WriteLine("Are You Sure Want To Delete- Y/N");
+                if (Console.ReadKey().Key == ConsoleKey.Y)
+                {
+                    contactDetails.Remove(contact);
+                    Console.WriteLine("\nContact Deleted");
+                }
+            }
+            else
+            {
+                Console.WriteLine("\nEnter a valid First Name");
+            }
+        }
     }
 }

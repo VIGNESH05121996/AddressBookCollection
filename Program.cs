@@ -10,7 +10,7 @@ namespace AddressBookCollection
 
             AddressBook book = new AddressBook();
 
-            Console.WriteLine("1.CreateContact\t2.AddContact\t3.EditWithFirstName");
+            Console.WriteLine("1.CreateContact\t2.AddContact\t3.EditWithFirstName\tDeletePersonDetails");
 
             Console.WriteLine("\nEnter Your Choice");
             int c = Convert.ToInt32(Console.ReadLine());
@@ -32,6 +32,11 @@ namespace AddressBookCollection
                     case 3:
                         book.CreateContact();
                         book.EditWithFirstName();
+                        break;
+
+                    case 4:
+                        book.CreateContact();
+                        book.DeletePersonDetails();
                         break;
 
                     default:
