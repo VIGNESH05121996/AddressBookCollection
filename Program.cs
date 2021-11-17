@@ -1,5 +1,5 @@
 ﻿using System;
-
+using System.Collections.Generic;
 namespace AddressBookCollection
 {
     class Program
@@ -9,17 +9,17 @@ namespace AddressBookCollection
             Console.WriteLine("Welcome To Address Book Collection");
 
             AddressBook book = new AddressBook();
+            Dictionary<AddressBook, string> addressBook = new Dictionary<AddressBook, string>();
 
             Console.WriteLine("1.CreateContact\t2.AddContact\t3.EditWithFirstName\t4.DeletePersonDetails\t5.AddMultipleContact");
-
-            Console.WriteLine("\nEnter Your Choice");
-            int c = Convert.ToInt32(Console.ReadLine());
 
             string key = "y";
             
             while(key != "n")
             {
-                switch(c)
+                Console.WriteLine("\nEnter Your Choice");
+                int c = Convert.ToInt32(Console.ReadLine());
+                switch (c)
                 {
                     case 1:
                         book.CreateContact();
@@ -49,6 +49,13 @@ namespace AddressBookCollection
                 }
                 Console.WriteLine("Do you want to continue-- press y/n");
                 key = Console.ReadLine();
+            }
+            Console.WriteLine("\nEnter Address Book Name");
+            string name = Console.ReadLine(); //name of address book
+            addressBook.Add(book, name); //adding address book to dictionary
+            foreach (var add in addressBook)
+            {
+                Console.WriteLine(add.Value);
             }
         }
     }
