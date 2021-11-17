@@ -22,6 +22,8 @@ namespace AddressBookCollection
     class AddressBook
     {
         public List<ContactDetails> contactDetails = new List<ContactDetails>(); //created empty list of contactDetails of class ContactDetails every time when run code
+        public Dictionary<string, List<ContactDetails>> addressBookCity = new Dictionary<string, List<ContactDetails>>(); //to store address based on city name
+        public Dictionary<string, List<ContactDetails>> addressBookState = new Dictionary<string, List<ContactDetails>>(); //to store address book based on state name
 
         ContactDetails contact = new ContactDetails(); //creating instance of class
         public void CreateContact()
@@ -107,21 +109,9 @@ namespace AddressBookCollection
 
         public void CheckDuplicateEntry()
         {
-            //foreach (ContactDetails person in contactDetails.FindAll(person => person.FirstName.Equals(contact.FirstName)))
-            //{
-            //    if (person != null)
-            //    {
-            //        Console.WriteLine("Contact Already Exist");
-            //    }
-            //    else
-            //    {
-            //        Console.WriteLine("Contact not exist");
-            //    }
-
-            //}
             Console.WriteLine("\nEnter person First Name");
             string firName = Console.ReadLine();
-            var person = contactDetails.Find(person => person.FirstName.Equals(firName));
+            var person = contactDetails.Find(person => person.FirstName.Equals(firName)); //Lambda expression to find contact is exists
             if(person != null)
             {
                 Console.WriteLine("\nContact Already Exists");
@@ -132,12 +122,72 @@ namespace AddressBookCollection
             }
         }
 
-        public void SearchPersonWithCity()
+        public void SearchPersonWithCityOrState()
         {
-            Console.WriteLine("\nEnter City Name to search person with city");
-            string cityName=Console.ReadLine();
-            var person = contactDetails.Find(person => person.City.Equals(cityName));
-            Console.WriteLine("{0} person is in city{1} ", contact.FirstName, cityName);
+            Console.WriteLine("\nEnter 1.Search Person With City\t2.Search Person With State");
+            int choice = Convert.ToInt32(Console.ReadLine());
+            switch(choice)
+            {
+                case 1:
+                    Console.WriteLine("\nEnter City Name to search person with city");
+                    string cityName = Console.ReadLine();
+                    var person = contactDetails.Find(person => person.City.Equals(cityName)); //Lambda expression to find person with city name
+                    Console.WriteLine("{0} person is in city{1} ", contact.FirstName, cityName);
+                    break;
+
+                case 2:
+                    Console.WriteLine("\nEnter State Name to search person with city");
+                    string stateName = Console.ReadLine();
+                    var person1 = contactDetails.Find(person1 => person1.State.Equals(stateName)); //Lambda expression to find person with state name
+                    Console.WriteLine("{0} person is in state{1} ", contact.FirstName, stateName);
+                    break;
+
+                default:
+                    Console.WriteLine("\nEnter a valid choice");
+                    break;
+            }
+        }
+
+        public void ViewPersonCityOrState()
+        {
+            AddMultipleContact();
+            Console.WriteLine("\n1.View Person By City Name\t2.View Person By State Name");
+            int choice = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("\nEnter how many person details you want to view");
+            int n = Convert.ToInt32(Console.ReadLine());
+            for (int i = 1; i <= n; i++)
+            {
+                switch (choice)
+                {
+                    case 1:
+                        Console.WriteLine("\nEnter City Name");
+                        string cityName = Console.ReadLine();
+                        var city = contactDetails.Find(city => city.City.Equals(cityName));
+                        foreach (var details in cityName)
+                        {
+                            if (details != null)
+                            {
+                                Console.WriteLine("\nFirst Name: " + contact.FirstName + "\nLast Name: " + contact.LastName + "\nAddress: " + contact.Address + "\nCity: " + contact.City + "\nState: " + contact.State + "\nZip: " + contact.Zip + "\nPhone No: " + contact.PhoneNumber + "\nEmail: " + contact.Email); //disolaying details
+                            }
+                        }
+                        addressBookCity.Add(cityName, contactDetails);
+                        break;
+
+                    case 2:
+                        Console.WriteLine("\nEnter State Name");
+                        string stateName = Console.ReadLine();
+                        var state = contactDetails.Find(state => state.City.Equals(stateName));
+                        foreach (var details in stateName)
+                        {
+                            if (details != null)
+                            {
+                                Console.WriteLine("\nFirst Name: " + contact.FirstName + "\nLast Name: " + contact.LastName + "\nAddress: " + contact.Address + "\nCity: " + contact.City + "\nState: " + contact.State + "\nZip: " + contact.Zip + "\nPhone No: " + contact.PhoneNumber + "\nEmail: " + contact.Email); //disolaying details
+                            }
+                        }
+                        addressBookCity.Add(stateName, contactDetails);
+                        break;
+                }
+            }
         }
     }
 }
