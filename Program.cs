@@ -11,7 +11,7 @@ namespace AddressBookCollection
             AddressBook book = new AddressBook();
             Dictionary<AddressBook, string> addressBook = new Dictionary<AddressBook, string>();
 
-            Console.WriteLine("1.CreateContact\t2.AddContact\t3.EditWithFirstName\t4.DeletePersonDetails\t5.AddMultipleContact");
+            Console.WriteLine("1.CreateContact\t2.AddContact\t3.EditWithFirstName\t4.DeletePersonDetails\t5.AddMultipleContact\t6.SearchPersonWithCity");
 
             string key = "y";
             
@@ -23,6 +23,7 @@ namespace AddressBookCollection
                 {
                     case 1:
                         book.CreateContact();
+                        book.CheckDuplicateEntry();
                         break;
 
                     case 2:
@@ -41,6 +42,11 @@ namespace AddressBookCollection
 
                     case 5:
                         book.AddMultipleContact();
+                        book.SearchPersonWithCity();
+                        break;
+
+                    case 6:
+                        book.SearchPersonWithCity();
                         break;
 
                     default:

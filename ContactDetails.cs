@@ -107,10 +107,37 @@ namespace AddressBookCollection
 
         public void CheckDuplicateEntry()
         {
-            foreach(ContactDetails person in contactDetails.FindAll(person=>person.FirstName.Equals(contact.FirstName)))
+            //foreach (ContactDetails person in contactDetails.FindAll(person => person.FirstName.Equals(contact.FirstName)))
+            //{
+            //    if (person != null)
+            //    {
+            //        Console.WriteLine("Contact Already Exist");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine("Contact not exist");
+            //    }
+
+            //}
+            Console.WriteLine("\nEnter person First Name");
+            string firName = Console.ReadLine();
+            var person = contactDetails.Find(person => person.FirstName.Equals(firName));
+            if(person != null)
             {
-                    Console.WriteLine("Contact Already Exist");
+                Console.WriteLine("\nContact Already Exists");
             }
+            else
+            {
+                Console.WriteLine("\nContact Not Exists ");
+            }
+        }
+
+        public void SearchPersonWithCity()
+        {
+            Console.WriteLine("\nEnter City Name to search person with city");
+            string cityName=Console.ReadLine();
+            var person = contactDetails.Find(person => person.City.Equals(cityName));
+            Console.WriteLine("{0} person is in city{1} ", contact.FirstName, cityName);
         }
     }
 }
