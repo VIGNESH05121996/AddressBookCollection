@@ -11,7 +11,7 @@ namespace AddressBookCollection
             AddressBook book = new AddressBook();
             Dictionary<AddressBook, string> addressBook = new Dictionary<AddressBook, string>();
 
-            Console.WriteLine("1.CreateContact\t2.AddContact\t3.EditWithFirstName\t4.DeletePersonDetails\t5.AddMultipleContact\t6.ViewPersonByCityOrState");
+            Console.WriteLine("1.CreateContact\t2.AddContact\t3.EditWithFirstName\t4.DeletePersonDetails\t5.AddMultipleContact\t6.ViewPersonByCityOrState7.CountCityState");
 
             string key = "y";
             
@@ -47,6 +47,10 @@ namespace AddressBookCollection
 
                     case 6:
                         book.ViewPersonCityOrState();
+                        break;
+
+                    case 7:
+                        book.CountCityState();
                         break;
 
                     default:

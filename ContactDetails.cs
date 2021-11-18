@@ -153,10 +153,6 @@ namespace AddressBookCollection
             AddMultipleContact();
             Console.WriteLine("\n1.View Person By City Name\t2.View Person By State Name");
             int choice = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine("\nEnter how many person details you want to view");
-            int n = Convert.ToInt32(Console.ReadLine());
-            for (int i = 1; i <= n; i++)
-            {
                 switch (choice)
                 {
                     case 1:
@@ -187,7 +183,23 @@ namespace AddressBookCollection
                         addressBookCity.Add(stateName, contactDetails);
                         break;
                 }
-            }
+        }
+
+        public void CountCityState()
+        {
+            AddMultipleContact();
+            Console.WriteLine("\nEnter City name");
+            string city = Console.ReadLine();
+
+            Console.WriteLine("\nEnter Sate Name");
+            string state = Console.ReadLine();
+
+            var cityCount = contactDetails.FindAll(cityCount=>cityCount.City == city).Count;
+            Console.WriteLine("\nCount by city: " + cityCount);
+
+            
+            var stateCount = contactDetails.FindAll(stateCount=>stateCount.State == state).Count;
+            Console.WriteLine("\nCount by state: " + stateCount);
         }
     }
 }
