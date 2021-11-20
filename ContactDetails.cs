@@ -19,7 +19,7 @@ namespace AddressBookCollection
         public string Email { get; set; }
     }
 
-    class AddressBook
+    public class AddressBook
     {
         public List<ContactDetails> contactDetails = new List<ContactDetails>(); //created empty list of contactDetails of class ContactDetails every time when run code
         public Dictionary<string, List<ContactDetails>> addressBookCity = new Dictionary<string, List<ContactDetails>>(); //to store address based on city name
