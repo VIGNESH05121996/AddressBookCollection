@@ -6,7 +6,7 @@ namespace AddressBookCollection
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("\nSwitch to 1:AddressBook \t2:AddressBook File I/O Using .txt\t3:Address Book File I/O using .csv");
+            Console.WriteLine("\nSwitch to 1:AddressBook \t2:AddressBook File I/O Using .txt\t3:Address Book File I/O using .csv\tAddress Book File I/O .json");
             int choice = Convert.ToInt32(Console.ReadLine());
 
             switch (choice)
@@ -125,6 +125,12 @@ namespace AddressBookCollection
                                 break;
                         }
                     }
+                    break;
+
+                case 4:
+                    Console.WriteLine("\nWelcome to File I/O Json Serializer");
+                    AddressBookFileIOJson jsonFile = new AddressBookFileIOJson();
+                    jsonFile.ReadingCsvWritingJson();
                     break;
 
                 default:
